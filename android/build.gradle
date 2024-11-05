@@ -1,0 +1,48 @@
+group 'com.honor.flutter_honor_account'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://developer.honor.com/repo'}
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://developer.honor.com/repo'}
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.honor.flutter_honor_account'
+    }
+
+    compileSdkVersion 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 19
+    }
+
+    dependencies {
+        // 荣耀账号SDK
+        implementation 'com.hihonor.mcs:honorid-opensdk:8.0.1.351'
+        // 对象转换为JSON
+        implementation 'com.google.code.gson:gson:2.9.1'
+    }
+}
